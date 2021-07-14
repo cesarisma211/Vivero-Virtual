@@ -1,0 +1,7 @@
+{
+  "name": "viveros",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
