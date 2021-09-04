@@ -1,0 +1,354 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      Proveedores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+    <ion-content class="ion-padding" >
+      <form (ngSubmit)="guardar(f)"  #f="ngForm" >
+
+  <ion-card>
+        <ion-card-header>
+          <ion-card-title>DATOS DEL PRODUCTO</ion-card-title>
+
+          <div class="centrado">
+            <img [src]="registro.foto" *ngIf="registro.foto" />
+          </div>
+
+        <div class="centrado">
+         <ion-button color="light"  (click)="sacarFoto()">
+           <ion-icon name="camera"></ion-icon>
+         </ion-button>
+  
+        </div>
+        
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item class="form-group">
+                  <ion-label position="floating"><ion-icon name="leaf">
+                  </ion-icon>REGISTRO ID</ion-label>
+                  <ion-input class="form-control"
+                             placeholder="Firebase ID"   
+                             name="id"
+                             disabled="disabled"
+                             [(ngModel)]="registro.id">
+                  </ion-input>  
+                </ion-item>
+              </ion-list>
+            </ion-col>
+            </ion-row>
+            </ion-grid>
+       
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="leaf">
+              </ion-icon>TIPO</ion-label>
+              <ion-input class="form-control"
+                        style="text-transform:uppercase;"
+                         name="tipo"
+                         type="text"
+                         required
+                         #tipo="ngModel"
+                         [class.is-invalid]="tipo.invalid && tipo.touched"
+                         [(ngModel)]="registro.tipo">
+                         <small *ngIf="tipo.invalid && tipo.touched" class="form-text text-danger">Ingresar tipo</small>
+              </ion-input>  
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        
+    
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="reader">
+              </ion-icon>DESCRIPCIÓN 1</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="descripcion1"
+                         type="text"
+                         required
+                         #descripcion="ngModel"
+                         [class.is-invalid]="descripcion.invalid && descripcion.touched"
+                         [(ngModel)]="registro.descripcion1"> 
+                         <small *ngIf="descripcion.invalid && descripcion.touched" class="form-text text-danger">Ingresar descripción</small>    
+              </ion-input>  
+            </ion-item>   
+            
+            
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="reader">
+              </ion-icon>DESCRIPCIÓN 2</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="descripcion2"
+                         type="text"
+                         required
+                         #descripcion="ngModel"
+                         [class.is-invalid]="descripcion.invalid && descripcion.touched"
+                         [(ngModel)]="registro.descripcion2"> 
+                         <small *ngIf="descripcion.invalid && descripcion.touched" class="form-text text-danger">Ingresar descripción</small>    
+              </ion-input>  
+            </ion-item>   
+            
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="reader">
+              </ion-icon>DESCRIPCIÓN 3</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="descripcion3"
+                         type="text"
+                         required
+                         #descripcion="ngModel"
+                         [class.is-invalid]="descripcion.invalid && descripcion.touched"
+                         [(ngModel)]="registro.descripcion3"> 
+                         <small *ngIf="descripcion.invalid && descripcion.touched" class="form-text text-danger">Ingresar descripción</small>    
+              </ion-input>  
+            </ion-item>         
+            
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="reader">
+              </ion-icon>DESCRIPCIÓN 4</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="descripcion4"
+                         type="text"
+                         required
+                         #descripcion="ngModel"
+                         [class.is-invalid]="descripcion.invalid && descripcion.touched"
+                         [(ngModel)]="registro.descripcion4"> 
+                         <small *ngIf="descripcion.invalid && descripcion.touched" class="form-text text-danger">Ingresar descripción</small>    
+              </ion-input>  
+            </ion-item>         
+
+          </ion-list>
+        </ion-col>
+  
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-gitlab">
+              </ion-icon>PRESENTACIÓN 1</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="presentacion1"
+                         type="text"
+                         required
+                         #presentacion="ngModel"
+                         [class.is-invalid]="presentacion.invalid && presentacion.touched"
+                         [(ngModel)]="registro.presentacion1">
+                         <small *ngIf="presentacion.invalid && presentacion.touched" class="form-text text-danger">Ingresar presentacion</small>    
+              </ion-input>              
+            </ion-item>
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-gitlab">
+              </ion-icon>PRESENTACIÓN 2</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="presentacion2"
+                         type="text"
+                         required
+                         #presentacion="ngModel"
+                         [class.is-invalid]="presentacion.invalid && presentacion.touched"
+                         [(ngModel)]="registro.presentacion2">
+                         <small *ngIf="presentacion.invalid && presentacion.touched" class="form-text text-danger">Ingresar presentacion</small>    
+              </ion-input>              
+            </ion-item>
+
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-gitlab">
+              </ion-icon>PRESENTACIÓN 3</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="presentacion3"
+                         type="text"
+                         required
+                         #presentacion="ngModel"
+                         [class.is-invalid]="presentacion.invalid && presentacion.touched"
+                         [(ngModel)]="registro.presentacion3">
+                         <small *ngIf="presentacion.invalid && presentacion.touched" class="form-text text-danger">Ingresar presentacion</small>    
+              </ion-input>              
+            </ion-item>
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-gitlab">
+              </ion-icon>PRESENTACIÓN 4</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="presentacion4"
+                         type="text"
+                         required
+                         #presentacion="ngModel"
+                         [class.is-invalid]="presentacion.invalid && presentacion.touched"
+                         [(ngModel)]="registro.presentacion4">
+                         <small *ngIf="presentacion.invalid && presentacion.touched" class="form-text text-danger">Ingresar presentacion</small>    
+              </ion-input>              
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+
+
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-usd">
+              </ion-icon>PRECIO 1</ion-label>
+              <ion-input class="form-control" 
+                         name="precio1"
+                         type="text"
+                         required
+                         #precio="ngModel"
+                         [class.is-invalid]="precio.invalid && precio.touched"
+                         [(ngModel)]="registro.precio1 ">
+                         <small *ngIf="precio.invalid && precio.touched" class="form-text text-danger">Ingresar precio</small>    
+              </ion-input>              
+            </ion-item>
+
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-usd">
+              </ion-icon>PRECIO 2</ion-label>
+              <ion-input class="form-control" 
+                         name="precio2"
+                         type="text"
+                         required
+                         #precio="ngModel"
+                         [class.is-invalid]="precio.invalid && precio.touched"
+                         [(ngModel)]="registro.precio2 ">
+                         <small *ngIf="precio.invalid && precio.touched" class="form-text text-danger">Ingresar precio</small>    
+              </ion-input>              
+            </ion-item>
+
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-usd">
+              </ion-icon>PRECIO 3</ion-label>
+              <ion-input class="form-control" 
+                         name="precio3"
+                         type="text"
+                         required
+                         #precio="ngModel"
+                         [class.is-invalid]="precio.invalid && precio.touched"
+                         [(ngModel)]="registro.precio3 ">
+                         <small *ngIf="precio.invalid && precio.touched" class="form-text text-danger">Ingresar precio</small>    
+              </ion-input>              
+            </ion-item>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-usd">
+              </ion-icon>PRECIO 4</ion-label>
+              <ion-input class="form-control" 
+                         name="precio4"
+                         type="text"
+                         required
+                         #precio="ngModel"
+                         [class.is-invalid]="precio.invalid && precio.touched"
+                         [(ngModel)]="registro.precio4 ">
+                         <small *ngIf="precio.invalid && precio.touched" class="form-text text-danger">Ingresar precio</small>    
+              </ion-input>              
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
+        
+       
+       
+       
+      </ion-row>
+    
+    </ion-grid>
+
+  </ion-card-header>
+</ion-card>
+
+   
+    <hr>
+    <ion-card>
+      <ion-card-header>
+
+        <ion-card-title>DATOS DEL PROVEEDOR</ion-card-title>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-group">
+            <ion-label position="floating"><ion-icon name="people">
+            </ion-icon>NOMBRE DEL PROVEEDOR</ion-label>
+            <ion-input class="form-control"
+                       style="text-transform:uppercase;"
+                       name="proveedor"
+                       type="text"
+                       required
+                       #proveedor="ngModel"
+                       [class.is-invalid]="proveedor.invalid && proveedor.touched"
+                       [(ngModel)]="registro.proveedor" >
+                       <small *ngIf="proveedor.invalid && proveedor.touched" class="form-text text-danger">Ingresar proveedor</small>    
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="form-group">
+            <ion-label position="floating" ><ion-icon name="call">
+            </ion-icon>CONTACTO</ion-label>
+            <ion-input class="form-control"
+                       style="text-transform:uppercase;"
+                       name="contacto"
+                       type="tel"
+                       required
+                       #contacto="ngModel"
+                       [class.is-invalid]="contacto.invalid && contacto.touched"
+                       [(ngModel)]="registro.contacto">
+                       <small *ngIf="contacto.invalid && contacto.touched" class="form-text text-danger">Ingresar contacto</small>    
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-group">
+            <ion-label position="floating" ><ion-icon name="location">
+            </ion-icon>UBICACIÓN</ion-label>
+            <ion-input class="form-control"
+                       style="text-transform:uppercase;"
+                       name="ubicacion"
+                       type="text"
+                       required
+                       #ubicacion="ngModel"
+                       [class.is-invalid]="ubicacion.invalid && ubicacion.touched"
+                       [(ngModel)]="registro.ubicacion">
+                       <small *ngIf="ubicacion.invalid && ubicacion.touched" class="form-text text-danger">Ingresar ubicación</small>    
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      
+      
+      </ion-grid>
+
+  <ion-button type="submit" expand="block" shape="round" color="light" >Guardar</ion-button>
+
+</ion-card-header>
+</ion-card>
+    
+    
+  </form>
+  </ion-content>
+  
+
+
+ 

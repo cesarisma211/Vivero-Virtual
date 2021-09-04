@@ -1,0 +1,47 @@
+
+
+<ion-content   class=" ion-padding">
+
+  <div id="viveross">
+
+    <td>
+    </td>
+    <td class="texto">
+      <img src="/assets/img/logo.jpeg" style="width: 15%;">
+    <h4 >3GEOPLANTAS - VIVERO VIRTUAL</h4>
+    </td>
+  
+  <hr>
+  <table class="table mt-3 animated fadeIn faster" cellpadding="0" cellspacing="0" style="width: 100%;line-height: inherit;text-align: left;">
+  
+  
+    <thead>
+      <tr>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Total</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cotizacion of cotizaciones ">
+        <td>{{ cotizacion.descripcion }}</td>
+        <td>{{ cotizacion.cantidad }}</td>
+        <td>{{ cotizacion.precio }}</td>
+        <td>{{ cotizacion.precio * cotizacion.cantidad | currency}}</td>
+
+      </tr>
+    </tbody>
+    </table>
+<div>
+  <table><h3 class="text">Total: {{ total | currency:'':symbol: '1.0-2' }}</h3></table>
+</div>
+
+  </div>
+ 
+<ion-button (click)="downloadInvoice()" expand="block" color="danger"  >
+  Descargar PDF
+</ion-button>
+
+</ion-content>

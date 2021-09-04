@@ -1,17 +1,177 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content  class=" ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  
+  <form (ngSubmit)="agregarRegistro(f)"  #f="ngForm" >
+
+
+
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+            <ion-item class="form-group">
+                <ion-label for="Tipos">Tipo</ion-label>
+                <ion-select  [(ngModel)]="cotizacion.tipo"
+                             #tipo="ngModel"
+                             class="form-control"
+                             [selectedText]="selectcategory"
+                             name="tipo"
+                             required
+                             interface="popover" (ionChange)="getType($event)">
+                  <ion-select-option *ngFor="let registro of registros" >{{ registro.tipo | uppercase }}</ion-select-option>
+                </ion-select>
+             </ion-item>   
+             </ion-col>
+
+
+
+      <br>
+      <br>
+          
+            <ion-col  >
+              <ion-item >
+                 <ion-label for="Descripcion">Descripcion</ion-label>
+                 <ion-select  interface="popover" 
+                              [(ngModel)]="cotizacion.descripcion"  
+                              #descripcion="ngModel"
+                              class="form-control"
+                              name="descripcion"
+                              required>
+                   <ion-select-option *ngFor="let descripcion of descripciones" >{{ descripcion.descripcion1 | uppercase }}</ion-select-option>
+                   <ion-select-option *ngFor="let descripcion of descripciones" >{{ descripcion.descripcion2 | uppercase }}</ion-select-option>
+                   <ion-select-option *ngFor="let descripcion of descripciones" >{{ descripcion.descripcion3 | uppercase }}</ion-select-option>
+                   <ion-select-option *ngFor="let descripcion of descripciones" >{{ descripcion.descripcion4 | uppercase }}</ion-select-option>
+
+                 </ion-select>
+             </ion-item> 
+             </ion-col>
+
+
+             <ion-col  >
+              <ion-item   >
+                 <ion-label for="Precio">Precio</ion-label>
+                 <ion-select  interface="popover" 
+                              [(ngModel)]="cotizacion.precio"  
+                              #precio="ngModel"
+                              class="form-control"
+                              name="precio"
+                              ngForm="precio" 
+                              type="number"
+                              required>
+                   <ion-select-option  *ngFor="let precio of precios" >{{ precio.precio1 | uppercase }}</ion-select-option>
+                   <ion-select-option  *ngFor="let precio of precios" >{{ precio.precio2 | uppercase }}</ion-select-option>
+                   <ion-select-option  *ngFor="let precio of precios" >{{ precio.precio3 | uppercase }}</ion-select-option>
+                   <ion-select-option  *ngFor="let precio of precios" >{{ precio.precio4 | uppercase }}</ion-select-option>
+
+                 </ion-select>
+             </ion-item> 
+             </ion-col>
+             
+             <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Cantidad</ion-label>
+                <ion-input type="number" 
+                           name="cantidad"
+                           class="form-control"
+                           [(ngModel)]="cotizacion.cantidad"
+                           #cantidad="ngModel"
+                           ></ion-input>
+             </ion-item> 
+             </ion-col>
+         
+
+
+        <ion-button type="submit" expand="block" color="primary" ><ion-icon name="cart"></ion-icon>Agregar</ion-button>
+        
+
+      </ion-row>
+      </ion-grid>
+
+   
+      <ion-grid class="ion-text-center"  id="tabla" style="width: 80%;">
+        <table>
+          <ion-button color="danger"  (click)="openInvoice(order)"><ion-icon name="document"></ion-icon>PDF</ion-button>
+        </table>
+        <hr>
+        <ion-row class="header-row">
+          <ion-col>
+            <ion-text>Descripcion</ion-text>
+          </ion-col>
+
+          <ion-col>
+            <ion-text>Cantidad</ion-text>
+          </ion-col>
+
+          <ion-col>
+            <ion-text>Precio</ion-text>
+          </ion-col>
+
+          <ion-col>
+            <ion-text>Total</ion-text>
+          </ion-col>
+
+      
+          <ion-col>
+            <ion-text>Herramientas</ion-text>
+          </ion-col>
+
+
+        </ion-row>
+
+        
+        
+    
+    
+        <ion-row *ngFor="let cotizacion of cotizaciones; let i = index" >
+    
+            <ion-col>
+              <ion-text>
+                {{ cotizacion.descripcion | uppercase }}
+              </ion-text>
+            </ion-col>
+
+
+            <ion-col>
+              <ion-text>
+                {{ cotizacion.cantidad }}
+              </ion-text>
+            </ion-col>
+
+
+            <ion-col>
+              <ion-text>
+                {{ cotizacion.precio | currency }}
+              </ion-text>
+            </ion-col>
+
+            <ion-col>
+              <ion-text>
+                {{ cotizacion.precio * cotizacion.cantidad  | currency}}
+              </ion-text>
+            </ion-col>
+
+   
+            <ion-col>
+              <ion-button color="primary"  [routerLink]="['/details', cotizacion.id]" ><ion-icon name="create-outline"></ion-icon></ion-button>
+
+              <ion-button color="danger"  (click)="borrarCotizacion(cotizacion, i)"><ion-icon name="trash"></ion-icon></ion-button>
+            </ion-col>
+
+        </ion-row>
+    
+        <ion-row>
+          <ion-col class="text">
+            <table><h3 class="text">Total: {{ total | currency:'':symbol: '1.0-2' }}</h3></table>
+          </ion-col>
+        </ion-row>
+        
+      </ion-grid>
+  </form>
+ 
 </ion-content>
+
+
+
+
+
+

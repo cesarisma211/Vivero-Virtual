@@ -1,0 +1,143 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      Vendedores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+    <ion-content class="ion-padding" >
+      <form (ngSubmit)="actualizarRegistro(f)"  #f="ngForm" >
+
+  <ion-card>
+        <ion-card-header>
+          <ion-card-title>DATOS DEL PRODUCTO</ion-card-title>
+
+        
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item class="form-group">
+                  <ion-label position="floating"><ion-icon name="leaf">
+                  </ion-icon>REGISTRO ID</ion-label>
+                  <ion-input class="form-control"
+                             placeholder="Firebase ID"   
+                             name="id"
+                             disabled="disabled"
+                             [(ngModel)]="cotizacion.id">
+                  </ion-input>  
+                </ion-item>
+              </ion-list>
+            </ion-col>
+            </ion-row>
+            </ion-grid>
+       
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="leaf">
+              </ion-icon>TIPO</ion-label>
+              <ion-input class="form-control"
+                        style="text-transform:uppercase;"
+                         name="tipo"
+                         type="text"
+                         required
+                         #tipo="ngModel"
+                         [class.is-invalid]="tipo.invalid && tipo.touched"
+                         [(ngModel)]="cotizacion.tipo">
+                         <small *ngIf="tipo.invalid && tipo.touched" class="form-text text-danger">Ingresar tipo</small>
+              </ion-input>  
+            </ion-item>
+          </ion-list> 
+        </ion-col>
+        
+    
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="reader">
+              </ion-icon>DESCRIPCIÓN 1</ion-label>
+              <ion-input class="form-control"
+                         style="text-transform:uppercase;"
+                         name="descripcion"
+                         type="text"
+                         required
+                         #descripcion="ngModel"
+                         [class.is-invalid]="descripcion.invalid && descripcion.touched"
+                         [(ngModel)]="cotizacion.descripcion"> 
+                         <small *ngIf="descripcion.invalid && descripcion.touched" class="form-text text-danger">Ingresar descripción</small>    
+              </ion-input>  
+            </ion-item>   
+
+          </ion-list>
+        </ion-col>
+  
+     
+
+
+        <ion-col>
+          <ion-list>
+            <ion-item class="form-group">
+              <ion-label position="floating"><ion-icon name="logo-usd">
+              </ion-icon>PRECIO 1</ion-label>
+              <ion-input class="form-control" 
+                         name="precio"
+                         type="text"
+                         required
+                         #precio="ngModel"
+                         [class.is-invalid]="precio.invalid && precio.touched"
+                         [(ngModel)]="cotizacion.precio ">
+                         <small *ngIf="precio.invalid && precio.touched" class="form-text text-danger">Ingresar precio</small>    
+              </ion-input>              
+            </ion-item>
+           
+          </ion-list>
+        </ion-col>
+
+        
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating" for="Precio">Cantidad</ion-label>
+              <ion-input type="number" 
+                         name="cantidad"
+                         class="form-control"
+                         [(ngModel)]="cotizacion.cantidad"
+                         #cantidad="ngModel"
+                         ></ion-input>
+           </ion-item> 
+          </ion-list>
+         </ion-col>
+       
+       
+      </ion-row>
+    
+    </ion-grid>
+
+  </ion-card-header>
+</ion-card>
+
+   
+    <hr>
+    <ion-card>
+      <ion-card-header>
+
+    
+  <ion-button type="submit" expand="block" shape="round" color="light" >Guardar</ion-button>
+
+</ion-card-header>
+</ion-card>
+    
+    
+  </form>
+  </ion-content>
+  
+
+
+ 
